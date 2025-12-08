@@ -1,7 +1,7 @@
 package com.lucasandrade.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lucasandrade.enums.Status;
-import com.lucasandrade.enums.TipoDeMensagem;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,23 +22,31 @@ public class ComunicacaoEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "data", nullable = true)
-    private LocalDateTime data;
-
-    @Column(name = "tipo_de_mensagem", nullable = true)
-    @Enumerated(EnumType.STRING)
-    private TipoDeMensagem tipoDeMensagem;
-
-    @Column(name = "email_destinatario", nullable = true)
+    @Column(name = "email_destinatario")
     private String emailDestinatario;
 
-    @Column(name = "tel_destinatario", nullable = true)
+    @Column(name = "tel_destinatario")
     private String telDestinatario;
 
-    @Column(name = "mensagem", nullable = true)
+    @Column(name = "mensagem")
     private String mensagem;
 
-    @Column(name = "status", nullable = true)
+    @Column(name = "data_hora_envio")
+    private LocalDateTime dataHoraEnvio;
+
+    @Column(name = "data_hora_agendamento")
+    private LocalDateTime dataHoraAgendamento;
+
+    @Column(name = "data_hora_modificacao")
+    private LocalDateTime dataHoraModificacao;
+
+    @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    @PrePersist
+    private void prePersist(){
+        dataHoraAgendamento = LocalDateTime.now();
+        status = Status.AGUARDANDO;
+    }
 }
