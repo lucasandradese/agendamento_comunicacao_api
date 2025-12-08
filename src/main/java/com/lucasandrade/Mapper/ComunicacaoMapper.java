@@ -26,7 +26,8 @@ public class ComunicacaoMapper {
                  comunicacaoEntity.getEmailDestinatario(),
                  comunicacaoEntity.getTelDestinatario(),
                  comunicacaoEntity.getMensagem(),
-                 comunicacaoEntity.getDataHoraEnvio()
+                 comunicacaoEntity.getDataHoraEnvio(),
+                 comunicacaoEntity.getStatus()
          );
 
          return dto;
