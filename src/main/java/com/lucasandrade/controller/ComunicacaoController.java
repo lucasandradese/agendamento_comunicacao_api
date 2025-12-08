@@ -28,4 +28,9 @@ public class ComunicacaoController {
                         .save(payload));
 
     }
+
+    @GetMapping("{id}")
+    public ResponseEntity<DtoResponse> buscarPorId(@PathVariable Long id){
+        return ResponseEntity.ok(agendamentoService.getById(id));
+    }
 }
