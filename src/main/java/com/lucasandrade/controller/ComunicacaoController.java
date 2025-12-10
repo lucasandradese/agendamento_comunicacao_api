@@ -33,4 +33,10 @@ public class ComunicacaoController {
     public ResponseEntity<DtoResponse> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(agendamentoService.getById(id));
     }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> cancelarPorId(@PathVariable Long id){
+        agendamentoService.cancelarPorId(id);
+        return ResponseEntity.accepted().build();
+    }
 }

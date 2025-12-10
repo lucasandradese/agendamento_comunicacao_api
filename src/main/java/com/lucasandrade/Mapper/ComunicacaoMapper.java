@@ -33,4 +33,10 @@ public class ComunicacaoMapper {
          return dto;
     }
 
+    public ComunicacaoEntity dtoCancelamento(ComunicacaoEntity dtoCancelamento){
+        ComunicacaoEntity comunicacao = new ComunicacaoEntity();
+        comunicacao.setDataHoraModificacao(dtoCancelamento.getDataHoraModificacao());
+        comunicacao.setStatus(dtoCancelamento.getStatus());
+        return comunicacao;
+    }
 }
